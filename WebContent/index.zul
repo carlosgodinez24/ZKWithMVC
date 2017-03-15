@@ -1,0 +1,31 @@
+<?page title="Countries"?>
+<window apply="com.qitcorp.controller.CountriesController" title="Countries" border="normal"
+width="400px" height="470px" position="center" mode="modal">
+
+<label id="lbl1" value="Country name:"/>
+<space width="5px" />
+<textbox id="txtName"></textbox>
+<separator></separator>
+<button id="btnAdd" label="Add" image="img/add.png" />
+<space width="5px" />
+<button id="btnEdit" label="Edit" image="img/edit.png"/>
+<space width="5px" />
+<button id="btnDelete" label="Delete" image="img/delete.png"/>
+<space width="5px" />
+<button id="btnClean" label="Clean fields" image="img/clean.png"/>
+<separator></separator>
+<button id="btnReadFile" label="Read file" upload="true" image="img/read.png"/>
+<separator></separator>
+<textbox id="txtSearch" placeholder="Search"></textbox>
+<separator></separator>
+<listbox id="lstCountries"  mold="paging" sizedByContent="true" pageSize="5">
+    <listhead sizable="true">
+        <listheader label="Country ID" width="90px"/>
+        <listheader label="Country name" width="288px"/>
+    </listhead>
+</listbox>
+<separator></separator>
+	<button id="btnExportExcel" label="Export data to excel file" image="img/xlsx.png" width="380px"/>
+	<separator></separator>
+	<button id="btnExportTxt" label="Export data to text file" image="img/txt.png" width="380px"/>
+</window>
