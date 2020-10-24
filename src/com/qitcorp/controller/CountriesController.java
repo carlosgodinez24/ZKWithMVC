@@ -277,6 +277,31 @@ public class CountriesController extends GenericForwardComposer{
 			Messagebox.show("You must upload an Excel-formatted file","ATTENTION", Messagebox.OK, Messagebox.EXCLAMATION);
 		}
 	}
+
+	public void onClick$btnExportTxt() {
+		File txtFile = new File("Countries.txt");
+		BufferedWriter bw = null;
+		String header = "ID|COUNTRY NAME";
+		try {
+			bw = new BufferedWriter(new FileWriter(txtFile));
+			bw.write(header);
+			bw.newLine();
+			for (Listitem iterator : this.lstCountries.getItems()) {
+				bw.write(iterator.getAttribute("countryID").toString() + "|" + iterator.getAttribute("countryName").toString());
+				bw.newLine();
+			}
+			bw.close();
+			Filedownload.save(txtFile, null);
+			Messagebox.show("Operacion exitosa.", "ATENCION", Messagebox.OK, Messagebox.INFORMATION);
+			Clients.clearBusy();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			Messagebox.show("Ha ocurrido un error", "ATENCION", Messagebox.OK, Messagebox.ERROR);
+		} catch (IOException e) {
+			e.printStackTrace();
+			Messagebox.show("Ha ocurrido un error", "ATENCION", Messagebox.OK, Messagebox.ERROR);
+		}
+	}
 	
 	public void onClick$btnExportExcel(){
 		File excelFile = new File("Countries.xlsx");
