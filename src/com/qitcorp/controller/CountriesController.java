@@ -318,31 +318,6 @@ public class CountriesController extends GenericForwardComposer{
         }
 	}
 	
-	public void onClick$btnExportTxt() {
-		File txtFile = new File("Countries.txt");
-		BufferedWriter bw = null;
-		String header = "ID|COUNTRY NAME";
-		try {
-			bw = new BufferedWriter(new FileWriter(txtFile));
-			bw.write(header);
-			bw.newLine();
-			for (Listitem iterator : this.lstCountries.getItems()) {
-				bw.write(iterator.getAttribute("countryID").toString() + "|" + iterator.getAttribute("countryName").toString());
-				bw.newLine();
-			}
-			bw.close();
-			Filedownload.save(txtFile, null);
-			Messagebox.show("Successful operation.", "ATTENTION", Messagebox.OK, Messagebox.INFORMATION);
-			Clients.clearBusy();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			Messagebox.show("An error has occurred", "ATTENTION", Messagebox.OK, Messagebox.ERROR);
-		} catch (IOException e) {
-			e.printStackTrace();
-			Messagebox.show("An error has occurred", "ATTENTION", Messagebox.OK, Messagebox.ERROR);
-		}
-	}
-	
 	public void onChanging$txtSearch(InputEvent evt){
 		this.cleanListbox(this.lstCountries);
 		String search = evt.getValue().trim(); 
